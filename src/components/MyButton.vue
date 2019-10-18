@@ -5,12 +5,12 @@
 </template>
 <script>
 export default {
-  name: 'B',
+  name: 'MyButton',
   props: {
-    button_name: String,
-    isAbled: 0,
-    pageindex: Number,
-    msg:""
+    button_name:'button',
+    isAbled:0,
+    pageindex: 0,
+    msg: ' '
   },
   methods: {
       mounted () {
