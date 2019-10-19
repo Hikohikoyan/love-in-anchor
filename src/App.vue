@@ -1,15 +1,34 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" :style="{backgroundImage: 'url(' + title + ')'}">
+<router-view></router-view>
   </div>
 </template>
 
+<script>
+export default {
+  data () {
+    return {
+        title: require('@/assets/background.png')
+    }
+}
+}
+</script>
 <style>
-#app {
-
+body{
+  margin: 0;
+}
+#app{
+  z-index: -1;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+        /* height: -webkit-fill-available; */
+    background-size: cover;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-items: center;
 }
 </style>

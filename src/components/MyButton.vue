@@ -1,37 +1,34 @@
 <template>
-<div class="button" :id="button_name" :isAbled=0 @click="showpages">
-    <span class="btnname">{{button_name}}</span>
+<div class="button" :id="button_name" :isAbled= 0 @click="showpages" >
+    <router-link :to="pagename" class="btnname" ></router-link>
+    <div id="btnpic" :class= button_name ></div>
 </div>
 </template>
 <script>
+  // var src='@/assets/'+ button_name +'.png';
+  // import btnsrc from src
+import '@/assets/button.css'
 export default {
   name: "MyButton",
   props: {
-    button_name:"button",
+    button_name:{
+      type: String,
+      default: "button"
+    },
     isAbled:0,
-    pageindex: 0,
-    msg: "a"
+    msg:{
+      type: String,
+      default: "a"
+    },
+    pagename:{
+      type: String,
+      default: "/"
+    },
   },
   methods: {
-      mounted () {
-          axios
-          .get('../assets/test.json')
-          .then(response => {
-              this.errmsg = response;
-              msg = String(response);
-              if( errcode == 0 ){
-                  isAbled = 1;
-              }
-              })
-          .catch(function (error) { 
-              isAbled = 1;
-              // 请求失败处理
-      });
-      },
       showpages: function (isAbled,button_name) {
           isAbled=this.isAbled;
           button_name=this.button_name;
-        //   pageindex=this.pageindex;
           if( isAbled==1 ){
               setTimeout(() => {
                   isAbled = 0;
@@ -39,19 +36,22 @@ export default {
               return;
           }
           isAbled=1;
-              if (button_name == "大赛介绍") {
-            //   pageindex = 1;
-              alert("func="+'1');
+              if (button_name == "introbtn") {
+              console.log(this.$route.params);
               return;
           }
-          if (button_name == "马上报名") {
-            //   pageindex = 2;
-              alert("func="+'2');
+          if (button_name == "registerbtn") {
+              console.log(this.$route.params);
               return;
           }
       },
   },
+
 }
 </script>
 <style scoped>
+.button{
+    margin-left: 25%;
+    margin-right: auto;
+}
 </style>

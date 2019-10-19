@@ -1,0 +1,16 @@
+.button{
+    margin-left: 25%;
+    margin-right: auto;
+}
+#btnpic{
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 160px;
+    margin: 0;
+}
+.registerobtn{
+    background-image: url(../assets/registerbtn.png);
+    background-image: url(http://localhost:8080/img/registerbtn.3436575c.png);
+
+}

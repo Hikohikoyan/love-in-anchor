@@ -1,8 +1,8 @@
 <template>
-  <div class="Hello">
-    <h1>爱上N主播</h1>
-    <MyButton button_name="大赛介绍" isAbled=0 MyButtonled=0 ></MyButton>
-    <MyButton button_name="马上报名" isAbled=0 buttonled=0 ></MyButton>
+  <div id="Home">
+        <img alt="title" :src="title" />
+    <MyButton button_name="大赛介绍" pagename="intro" isAbled= 0 MyButtonled= 0 ></MyButton>
+    <MyButton button_name="马上报名" pagename="resgister" isAbled= 0 buttonled= 0 ></MyButton>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 // @ is an alias to /src
 // import intro from '@/components/intro.vue'
 import MyButton from '@/components/MyButton.vue'
+import title from '@/assets/title.png'
 
 export default {
   name: 'home',
@@ -17,6 +18,23 @@ export default {
     // intro,
     MyButton
   },
-
+  data() {
+    return {
+      title : title
+    }
+  },
 }
+
 </script>
+<style>
+#home{
+margin-top: 60px;
+    height: -webkit-fill-available;
+    /* display: flex; */
+    /* text-align: center; */
+    }
+#title{
+    width: 100%;
+}
+
+</style>
