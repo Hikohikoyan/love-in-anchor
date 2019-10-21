@@ -37,11 +37,11 @@ export default {
           }
           isAbled=1;
               if (button_name == "introbtn") {
-              console.log(this.$route.params);
+              console.log(this.$route);
               return;
           }
           if (button_name == "registerbtn") {
-              console.log(this.$route.params);
+              console.log(this.$route);
               return;
           }
       },
@@ -50,8 +50,4 @@ export default {
 }
 </script>
 <style scoped>
-.button{
-    margin-left: 25%;
-    margin-right: auto;
-}
 </style>
