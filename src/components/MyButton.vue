@@ -1,12 +1,11 @@
 <template>
-<div class="button" :id="button_name" :isAbled= 0 @click="showpages" >
-    <router-link :to="pagename" class="btnname" ></router-link>
+<div class="button" :id="button_name" :isAbled= 0 @click="showpages"> 
+    <router-link :to="pagename" :class="button_name" ></router-link>
     <div id="btnpic" :class= button_name ></div>
 </div>
 </template>
 <script>
   // var src='@/assets/'+ button_name +'.png';
-  // import btnsrc from src
 import '@/assets/button.css'
 export default {
   name: "MyButton",
@@ -15,7 +14,10 @@ export default {
       type: String,
       default: "button"
     },
-    isAbled:0,
+    isAbled:{
+      type: String,
+      default: '0'
+    },
     msg:{
       type: String,
       default: "a"
@@ -26,7 +28,8 @@ export default {
     },
   },
   methods: {
-      showpages: function (isAbled,button_name) {
+      showpages: function (isAbled,button_name,pagename) {
+        console.log(this.pagename);
           isAbled=this.isAbled;
           button_name=this.button_name;
           if( isAbled==1 ){
@@ -36,12 +39,14 @@ export default {
               return;
           }
           isAbled=1;
+          console.log(button_name);
               if (button_name == "introbtn") {
-              console.log(this.$route);
+              // console.log(this.$router.push('/intro'));
+              this.$router.push('/intro')
               return;
           }
           if (button_name == "registerbtn") {
-              console.log(this.$route);
+              this.$router.push('/register')
               return;
           }
       },

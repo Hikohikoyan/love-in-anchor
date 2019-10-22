@@ -30,7 +30,7 @@ axios.defaults.baseURL = '微信认证页'
 //   }
 // )
 // //把axios注册到Vue
-// Vue.prototype.$http = axios
+Vue.prototype.$http = axios
 // var timestamp=new Date().getTime();
 // wx.config({
 //   appId: appId, // 和获取Ticke的必须一样------必填，公众号的唯一标识

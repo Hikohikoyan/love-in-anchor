@@ -1,0 +1,195 @@
+.att2 {
+    width: 80%;
+    font-size: 90%;
+    font-family: "Adobe Heiti Std";
+    color: rgb(78, 77, 77);
+    text-transform: uppercase;
+  }
+
+  #register_container {
+    height: -webkit-fill-available;
+    margin-top: 80px;
+    width: 80%;
+    left: 10%;
+    position: absolute;
+    right: auto;
+  }
+  #form{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(7, 50px);
+    grid-gap: 15px;
+  }
+  .cinbox {
+    display: inline-grid;
+    grid-template-columns: 20% 5% 75%;
+    grid-template-rows: 50px;
+  }
+
+  .beforetext {
+    font-size: 20px;
+    font-family: "Adobe Heiti Std";
+    color: rgb(78, 77, 77);
+    text-transform: uppercase;
+    line-height: 1.2;
+    left: 0;
+  }
+
+  .aftertext {
+    font-size: 20px;
+    font-family: "Adobe Heiti Std";
+    color: rgb(78, 77, 77);
+    text-transform: uppercase;
+    line-height: 1.2;
+    left: 0;
+  }
+
+  .overselect {
+    width: 20px;
+    width: 0px;
+    height: 6px;
+    border: 13px solid;
+    border-color: #838485 transparent transparent transparent;
+    position: relative;
+    margin-left: 265px;
+    margin-top: -40px;
+    z-index: 20;
+    border-radius: 0.4rem 0.4rem 0 0.2rem;
+  }
+
+  .inputer {
+    margin-top: -5px;
+    margin-left: 5px;
+    border-width: 2px;
+    border-color: rgb(127, 128, 128);
+    border-style: dashed;
+    border-radius: 9px;
+    height: 40px;
+    background-color: transparent;
+    background-image: -webkit-linear-gradient(180deg, transparent 0%, rgba(161, 186, 186, 0.2) 100%);
+    padding: 2%;
+    padding-left: 10px;
+    right: 0%;
+    width: 200px;
+    padding-right: 5.66px;
+    outline: none;
+  }
+
+  select.inputer {
+    width: 220px;
+    padding-right: 0;
+    -webkit-appearance: none;
+  }
+
+  select::after {
+    content: " " !important;
+    width: 10px;
+    height: 10px;
+    border: 10px solid;
+    border-color: #666 transparent transparent transparent;
+    position: absolute;
+    top: 0px;
+    z-index: 20;
+  }
+
+  .radio {
+    display: inline-block;
+    border-width: 2px;
+    border-color: rgb(127, 128, 128);
+    border-style: solid;
+    border-radius: 50%;
+    margin: 0;
+    -webkit-appearance: unset;
+    /* border: none; */
+    margin-left: 10px;
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+    padding-top: 4px;
+    border-radius: 1rem;
+  }
+
+  /* .radio::before {
+    content: " ";
+    border-width: 3px;
+    border-color: rgb(127, 128, 128);
+    border-style: solid;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin-top: -3px;
+    position: absolute;
+} */
+  .radio:hover,
+  .radio:active {
+
+    background-image: -moz-linear-gradient(180deg, rgb(194, 223, 245) 0%, rgb(161, 186, 186) 100%);
+    background-image: -webkit-linear-gradient(180deg, rgb(194, 223, 245) 0%, rgb(161, 186, 186) 100%);
+    background-image: -ms-linear-gradient(180deg, rgb(194, 223, 245) 0%, rgb(161, 186, 186) 100%);
+    background-size: 10px;
+    background-clip: content-box;
+    background-origin: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+
+  .attentiontext {
+    color: #c36774;
+    font-size: 15px;
+    margin-top: 40px;
+    margin-left: 70px;
+    font-size: 15px;
+    white-space: pre-line;
+    position: relative;
+  }
+
+  .aftertext::before {
+    content: " ";
+    background: linear-gradient(90deg, rgba(163, 188, 193, 1) 0%, rgba(185, 213, 229, 1) 100%);
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: -29px;
+    margin-top: 6px;
+  }
+
+  #genderatt {
+    margin-left: 10px;
+  }
+
+  #timeatt {
+    margin-left: 20px;
+    margin-top: 140px;
+  }
+
+  #telatt {
+    margin-left: 30px;
+  }
+
+  .cinbox4 {
+    display: -webkit-inline-box;
+    height: 30px;
+  }
+  .button{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-right: auto; */
+    text-align: -webkit-center;
+}
+#submitbtn{
+    background-size: contain;
+    /* background: none; */
+    border: none;
+    -webkit-appearance: none;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 180px;
+    background-color: transparent;
+    margin: 0;
+    position: relative;
+    background-image: url(submitbtn.png);
+    margin-top: 30px;
+}
