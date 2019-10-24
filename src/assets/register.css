@@ -17,8 +17,9 @@
   #form{
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: repeat(7, 50px);
+    grid-template-rows: repeat(11, 50px);
     grid-gap: 15px;
+    margin-bottom: 20px;
   }
   .cinbox {
     display: inline-grid;
@@ -42,6 +43,7 @@
     text-transform: uppercase;
     line-height: 1.2;
     left: 0;
+    white-space: nowrap;
   }
   #grade_selector::after,#campus_selector::after,#colledge_selector::after{
     content: " ";
@@ -50,13 +52,13 @@
     height: 6px;
     border: 13px solid;
     border-color: #838485 transparent transparent transparent;
-    position: absolute;
-    /* margin-left: 265px; */
+    position: relative;
+    margin-left: 240px;
     /* margin-top: -40px; */
     z-index: 20;
     border-radius: 0.4rem 0.4rem 0 0.2rem;
-    right: 12px;
-    margin-top: 8px;
+    right: 0px;
+    margin-top: 25px;
   }
   .overselect {
     width: 20px;
@@ -154,7 +156,7 @@
     margin-top: 40px;
     margin-left: 70px;
     font-size: 15px;
-    white-space: pre-line;
+    white-space: pre;
     position: relative;
   }
 
@@ -187,6 +189,9 @@
     display: -webkit-inline-box;
     height: 30px;
   }
+  .cinbox2{
+    width: 300px;
+  }
   .button{
     position: relative;
     margin-left: auto;
@@ -204,16 +209,14 @@
     width: 180px;
     background-color: transparent;
     margin: 0;
-    /* position: relative; */
     background-image: url(submitbtn.png);
-    margin-left: 50%;
-    margin-right: -90px;
 }
 #select_text{
 }
 #btn_container{
-  position:absolute;
-  bottom: -20px;
+  position: relative;
+  bottom: 0;
+  grid-area: 11;
 }
 input{
   outline: none;

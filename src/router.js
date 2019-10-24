@@ -4,7 +4,6 @@ import Home from './views/Home.vue'
 import Intro from './views/Introduction.vue'
 import Register from './views/Register.vue'
 import Final from './views/final.vue'
-
 Vue.use(Router)
 
 export default new Router({
