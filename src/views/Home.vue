@@ -1,7 +1,7 @@
 <template>
   <div id="home">
         <!-- <img alt="title" id="title" :src="title" /> -->
-    <anime></anime>
+    <anime id="anime"></anime>
     <MyButton button_name="introbtn" pagename="/intro" isAbled= '0'  ></MyButton>
     <MyButton button_name="registerbtn" pagename="/resgister" isAbled= '0'></MyButton>
   </div>
@@ -11,7 +11,7 @@
 // @ is an alias to /src
 // import intro from '@/components/intro.vue'
 import MyButton from '../components/MyButton.vue'
-import title from '../assets/title1.png'
+// import title from '../assets/title1.png'
 import anime from '../components/animation.vue'
 export default {
   name: 'home',
@@ -22,7 +22,7 @@ export default {
   },
   data() {
     return {
-      title : title
+      // title : title
     }
   },
 }
@@ -30,17 +30,28 @@ export default {
 </script>
 <style scoped>
 #home{
-margin-top: 80px;
+    margin-top: 80px;
     height: -webkit-fill-available;
-display: grid;
+    display: grid;
     /* text-align: center; */
     /* align-items: center; */
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-columns: 100%;
+    grid-template-rows:  250px 10px 180px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 80%;
+    margin-left: 10%;
+    /* overflow:hidden; */
     }
 #title{
     width: 100%;
 }
+#anime{
+      display: flex;
+    height: 50%;
+    width: 100%;
+    }
 .button{
   margin-top: 100px;
 }

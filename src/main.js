@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import QS from 'qs'
+import './plugins/element.js'
 
 
 Vue.config.productionTip = false
@@ -13,7 +14,7 @@ Vue.prototype.QS = QS
 axios.defaults.timeout = 10000*3;
 if (process.env.NODE_ENV == 'development') {    
   axios.defaults.baseURL = 'http://182.254.161.213/love-in-anchor/';
-} 
+}
 // else if (process.env.NODE_ENV == 'debug') {    
 //   axios.defaults.baseURL = 'https://www.ceshi.com';
 // } 

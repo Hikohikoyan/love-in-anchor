@@ -6,7 +6,7 @@
 </template>
 <script>
   // var src='@/assets/'+ button_name +'.png';
-import '@/assets/button.css'
+import '@/assets/css/button.css'
 export default {
   name: "MyButton",
   props: {
