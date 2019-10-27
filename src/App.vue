@@ -1,36 +1,41 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" :style="{backgroundImage: 'url(' + title + ')'}">
+<router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+  data () {
+    return {
+        title: require('@/assets/img/background.png')
+    }
+    },
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style >
+body,html,#app{
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  z-index: -4;
 }
+#app{
+  z-index: -1;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height:100%;
+    background-size: cover;
+}
+::-webkit-scrollbar {
+    display: none
+}
+.el-message-box{
+  width: 80% !important;
+  }
 </style>

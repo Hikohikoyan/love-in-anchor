@@ -32,13 +32,18 @@ export default {
     return {
       title: title
     };
+  },
+  mounted(){
+    document.getElementsByTagName("body")[0].style.overflowY="hidden"; 
+        document.getElementById("app").style.overflowY="hidden";
+
   }
 };
 </script>
 
 <style>
 #intro {
-  margin-top: 60px;
+  margin-top: 20vw;
   height: -webkit-fill-available;
   /* display: flex; */
   /* text-align: center; */

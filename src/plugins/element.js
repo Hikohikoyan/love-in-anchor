@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { Button,MessageBox } from 'element-ui'
 
 MessageBox.install = function (Vue,options){
-    Vue.prototype.$alertt =MessageBox
+    Vue.prototype.$alert =MessageBox
 }
 
 Vue.use(Button)

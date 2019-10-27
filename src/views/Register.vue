@@ -19,14 +19,7 @@
         <label class="beforetext">性别：</label>
         <input type="radio" class="radio" id="male" v-model="userinfo.gender" value="1" />
         <label for="male" class="aftertext">男</label>
-        <input
-          type="radio"
-          class="radio"
-          id="female"
-          @click="back"
-          v-model="userinfo.gender"
-          value="0"
-        />
+        <input type="radio" class="radio" id="female" v-model="userinfo.gender" value="0" />
         <label for="female" class="aftertext">女</label>
         <span class="attentiontext" id="genderatt" v-show="show">请选择性别</span>
       </div>
@@ -167,7 +160,15 @@ export default {
         "11.10 上午 9:00-12:00",
         "11.10 下午 15:00-17:30"
       ],
-      userinfo: { name: "", gender: 1, grade: "", time: [], tele: "",campus:"",college:"" },
+      userinfo: {
+        name: "",
+        gender: 1,
+        grade: "",
+        time: [],
+        tele: "",
+        campus: "",
+        college: ""
+      },
       teler: false,
       namer: false,
       errmsg: { name: "", tele: "" },
@@ -181,9 +182,6 @@ export default {
     };
   },
   methods: {
-    telme() {
-      console.log("time1");
-    },
     submit() {
       this.isClick == true;
       if (this.campus == 3) {
@@ -201,13 +199,12 @@ export default {
       if (this.userinfo.name == "") {
         this.namer = true;
       }
-      console.log();
       var select_check = !(
         this.grade_check &&
         this.campus_check &&
         this.college_check
       );
-      console.log(select_check);
+      // console.log(select_check);
       var check = Boolean(
         this.timer == false &&
           select_check &&
@@ -215,16 +212,17 @@ export default {
           !this.teler &&
           this.userinfo.gender != 3
       );
-      console.log(check);
+      // console.log(check);
       if (!check) {
-        console.log("没填完");
+        this.$alert("你还没有填完所有信息", "提示", {
+          confirmButtonText: "确认",
+          center: true
+        }).catch(() => {});
         return;
       } else {
         this.isAbled = true;
-        this.userinfo.campus = this.arr1[this.campus];
+        this.userinfo.campus = this.campus;
         this.userinfo.college = this.college;
-        console.log(this.userinfo);
-        // this.userinfo = JSON.stringify(this.userinfo);
         const options = {
           method: "POST",
           headers: {
@@ -240,30 +238,48 @@ export default {
               return data;
             }
           ],
-          data: this.userinfo, 
+          data: this.userinfo,
           url: ajaxurl
         };
         this.axios(options)
           .then(res => {
             if (res.data.errcode == 0) {
               this.$router.push("/success");
+              return;
             }
             if (res.data.errcode == 400) {
               var len = res.data.errmsg.type.length;
               for (let i = 0; i < len; i++) {
-                console.log(i, res.data.errmsg.type[i]);
+                // console.log(i, res.data.errmsg.type[i]);
                 switch (res.data.errmsg.type[i]) {
                   case "name":
                     this.namer = true;
+                      this.$refs["input"].focus();
                     break;
                   case "tele":
                     this.teler = true;
+                        this.$refs["tel"].focus();
                     break;
                   default:
-                    console.log("还有什么写错了");
+                                    this.$alert("有什么填错了", "提示", {
+                  confirmButtonText: "返回",
+                }).catch(() => {
+                });
                     break;
                 }
               }
+            }else if(res.data.errcode == 402){
+                  this.$alert(String(res.data.errmsg.name)+"同学，你"+String(res.data.errmsg.msg),"提示",{
+                  confirmButtonText:"返回"
+                }).catch(() => {
+                  // this.$router.push('/');
+                });
+            }else{
+                  this.$alert(String(res.data.errmsg),"提示",{
+                  confirmButtonText:"返回"
+                }).catch(() => {
+                  // this.$router.push('/');
+                });
             }
           })
           .catch(error => {
@@ -272,22 +288,43 @@ export default {
             switch (errcode) {
               case 400:
                 this.isAbled = true;
-                console.log("你什么都没有填嘛");
+                this.$router.go(-1);
+                this.$alert("你还没有填写信息！", "提示", {
+                  confirmButtonText: "确认",
+                }).catch(() => {
+                });
                 break;
               case 402:
                 this.isAbled = true;
-                console.log("你不是报名过了吗");
+                this.$alert("你不是报名过了吗","提示",{
+                  confirmButtonText:"返回"
+                }).catch(() => {
+                  // this.$router.push('/');
+                });
                 break;
               case 403:
                 this.isAbled = false;
-                console.log(this.error.response.data);
-                console.log(this.error.message);
+                this.$alert("网络出错啦","提示",{
+                  confirmButtonText:"返回"
+                }).catch(() => {
+                  // this.$router.push('/');
+                });
+                console.log(error.response.data);
+                console.log(error.message);
               case 500:
                 this.isAbled = true;
-                console.log("Interval error");
+                this.$alert("网络出错啦","提示",{
+                  confirmButtonText:"返回"
+                }).catch(() => {
+                  // this.$router.push('/');
+                });
               case 502:
                 this.isAbled = true;
-                console.log('502');
+                this.$alert("网络出错啦","提示",{
+                  confirmButtonText:"返回"
+                }).catch(() => {
+                  // this.$router.push('/');
+                });
               default:
                 console.log(this.error.config);
                 break;
@@ -300,19 +337,28 @@ export default {
       const patternStr = /^[\u4E00-\u9FA5A-Za-z]+(·[\u4E00-\u9FA5A-Za-z]+)*$/g;
       const patternwrong = /[^a-zA-Z0-9\_\u4e00-\u9fa5]/g;
       this.namer = !patternStr.test(name) || !name;
-      // console.log(this.namer);
       if (this.namer == true || patternwrong.test(name)) {
         this.namer = true;
         this.userinfo.name = "";
       }
     },
     change() {
+      this.college = "";
+      // console.log(this.college);
+      this.campus_check = true;
+      this.arr2 = [];
+      // console.log(this.college_check);
+      if (this.college_check == false) {
+        this.college_check = true;
+      }
+      this.arr2 = college[this.campus];
       if (this.campus < 3) {
         this.campus_check = false;
       } else {
         this.campus_check = true;
       }
       this.arr2 = null;
+      this.college = "";
       this.arr2 = college[this.campus];
     },
     isPhone() {
@@ -332,13 +378,15 @@ export default {
       }, 1000);
     },
     back() {
-      if (this.college == "") {
-        this.college_check = true;
-      }
-      if (this.userinfo.grade != "") {
-        this.grade_check = false;
-      } else {
+      if (this.userinfo.grade == "") {
         this.grade_check = true;
+      } else {
+        this.grade_check = false;
+      }
+      if (this.campus == 3) {
+        this.campus_check = true;
+      } else {
+        this.campus_check = false;
       }
       if (this.college != "") {
         this.college_check = false;
@@ -350,12 +398,14 @@ export default {
   mounted() {
     this.arr2 = college[0];
     this.$refs["input"].focus();
+    document.getElementsByTagName("body")[0].style.overflowY = "scroll";
+    document.getElementById("app").style.overflowY = "scroll";
   },
   computed: {
     timer: function() {
-      if (this.userinfo.time.length == 0 ) {
+      if (this.userinfo.time.length == 0) {
         return true;
-      }else{
+      } else {
         return false;
       }
     }

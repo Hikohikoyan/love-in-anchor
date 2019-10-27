@@ -32,6 +32,9 @@ export default {
       history.pushState(null, null, document.URL);
       window.addEventListener("popstate", this.goBack, false);
     }
+    document.getElementsByTagName("body")[0].style.overflowY="hidden"; 
+    document.getElementById("app").style.overflowY="hidden";
+
   },
 
   destroyed() {
