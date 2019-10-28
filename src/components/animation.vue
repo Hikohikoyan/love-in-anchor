@@ -1,13 +1,13 @@
 <template>
   <div id="anime" name="decrease" @transitionend="move()">
-          <!-- <div class="pic" id="l_stick"></div> -->
+          <div class="pic" id="l_stick"></div>
 
-    <!-- <div id="contain">
+    <!-- <div id="contain"> -->
       <div id="clouds">
         <img alt="title" :class="run" id="cloud_r" ref="rightcloud" :src="right" />
             <img alt="title" :class="run" id="cloud_l" ref="leftcloud" :src="left" />
 
-      </div> -->
+      </div> 
       <!-- <div id="tao"> -->
       <div class="left">
         <div :class="bg" id="l_bg" ref="leftbg">
@@ -19,9 +19,8 @@
         <!-- <img alt="title" :class="bg" id="r_bg" ref="rightbg"  :src="r_bg" /> -->
         <!-- </div> -->
       </div>
-
     <!-- </div> -->
-                  <!-- <div class="pic" id="r_stick"></div> -->
+                  <div class="pic" id="r_stick"></div>
 
   </div>
 </template>

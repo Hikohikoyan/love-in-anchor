@@ -2,8 +2,8 @@
   <div id="home">
     <!-- <img alt="title" id="title" :src="title" /> -->
     <anime id="anime"></anime>
-    <MyButton button_name="introbtn" pagename="/intro" isAbled="0"></MyButton>
-    <MyButton button_name="registerbtn" pagename="/resgister" isAbled="0"></MyButton>
+    <MyButton button_name="introbtn" pagename="/intro" :isAbled=0></MyButton>
+    <MyButton button_name="registerbtn" pagename="/resgister" :isAbled=0></MyButton>
   </div>
 </template>
 
@@ -12,54 +12,36 @@
 // import intro from '@/components/intro.vue'
 import MyButton from "../components/MyButton.vue";
 // import title from '../assets/title1.png'
-import anime from "../components/animation.vue";
+import anime from "../components/animation2.vue";
+import api, { checkTime, checkLogin, checkSubscribe, isWeiXin } from '../api'
+
 export default {
   name: "home",
   components: {
     // intro,
+
     anime,
     MyButton
   },
   data() {
     return {
       // title : title
+          isAbled:0,
     };
   },
   mounted() {
     document.getElementsByTagName("body")[0].style.overflowY = "hidden";
     document.getElementById("app").style.overflowY = "hidden";
-    const options = {
-      method: "GET",
-      headers: {
-        // 'content-type': 'application/x-www-form-urlencoded',
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST,GET",
-        "Content-Type": "application/json"
-      },
-      transformRequest: [
-        function(data) {
-          console.log(data);
-          data = JSON.stringify(data);
-          return data;
-        }
-      ],
-      url: "http://182.254.161.213/love-in-anchor/checkLogin"
-    };
-    this.axios(options)
-    .then(res => {
-      if(res.data.errcode!=0){
-        this.$alert('感谢关注','BBT',{
-          confirmButtonText:'OK'
-        }).catch(() => {
-                });
-      }else{
-        this.$alert('你还没有关注','BBT',{
-          confirmButtonText:'OK'
-        }).catch(() => {
-                });
-      }
-    });
-  }
+    if(!isWeiXin()){
+      this.isAbled=1;
+      return;
+    }else{
+      this.isAbled=0;
+    }
+    checkTime();
+    checkLogin();
+    checkSubscribe();
+    }
 };
 </script>
 <style scoped>

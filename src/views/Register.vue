@@ -142,10 +142,9 @@ import "@/assets/css/register.css";
 // import "@/assets/check.js";
 //
 var college = require("@/assets/college.json");
-const collegeurl = "http://182.254.161.213/love-in-anchor/colleges";
-const ajaxurl = "http://182.254.161.213/love-in-anchor/recruit";
 import axios from "axios";
-import QS from "qs";
+import {ajaxurl} from '../config';
+import api from '../api';
 export default {
   name: "register",
   data: function() {
@@ -184,6 +183,13 @@ export default {
   methods: {
     submit() {
       this.isClick == true;
+      if(window.sessionStorage.getItem('isAbled')=="true"){
+        this.isAbled=true;
+        this.$alert(window.sessionStorage.getItem('TimeErr'),'活动时间提示',{
+          confirmButtonText:"返回"
+        }).catch(()=>{});
+        return;
+      }
       if (this.campus == 3) {
         this.campus_check = true;
       }
@@ -226,7 +232,6 @@ export default {
         const options = {
           method: "POST",
           headers: {
-            // 'content-type': 'application/x-www-form-urlencoded',
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "POST,GET",
             "Content-Type": "application/json"

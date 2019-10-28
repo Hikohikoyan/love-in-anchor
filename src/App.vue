@@ -1,16 +1,22 @@
 <template>
-  <div id="app" :style="{backgroundImage: 'url(' + title + ')'}">
+  <div id="app" :style="{}">
 <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {
+import api, { isWeiXin } from './api'
+export default {//backgroundImage: 'url(' + title + ')'
   data () {
     return {
         title: require('@/assets/img/background.png')
     }
     },
+mounted(){
+ if(! isWeiXin()){
+   this.$alert('请使用微信浏览器访问！','提示').catch(()=>{});
+ }
+}
 }
 </script>
 
@@ -31,6 +37,7 @@ body,html,#app{
     width: 100%;
     height:100%;
     background-size: cover;
+  background-color: #eef5fb;
 }
 ::-webkit-scrollbar {
     display: none

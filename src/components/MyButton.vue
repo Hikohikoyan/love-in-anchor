@@ -15,8 +15,8 @@ export default {
       default: "button"
     },
     isAbled:{
-      type: String,
-      default: '0'
+      type: Number,
+      default: 0
     },
     msg:{
       type: String,
@@ -28,17 +28,15 @@ export default {
     },
   },
   methods: {
-      showpages: function (isAbled,button_name,pagename) {
+      showpages: function () {
         console.log(this.pagename);
-          isAbled=this.isAbled;
           button_name=this.button_name;
-          if( isAbled==1 ){
+          if( this.isAbled==1 ){
               setTimeout(() => {
                   isAbled = 0;
               }, 5000);
               return;
           }
-          isAbled=1;
           console.log(button_name);
               if (button_name == "introbtn") {
               // console.log(this.$router.push('/intro'));
