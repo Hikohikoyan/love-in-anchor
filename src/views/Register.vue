@@ -13,15 +13,58 @@
           placeholder="请输入姓名"
           ref="input"
         />
-        <label for="name" class="attentiontext" v-show="namer">请输入姓名</label>
+        <label for="name" class="attentiontext" v-show="namer"
+          >请输入姓名</label
+        >
       </div>
       <div class="cinbox2">
         <label class="beforetext">性别：</label>
-        <input type="radio" class="radio" id="male" v-model="userinfo.gender" value="1" />
+        <input
+          type="radio"
+          class="radio"
+          id="male"
+          v-model="userinfo.gender"
+          value="1"
+        />
         <label for="male" class="aftertext">男</label>
-        <input type="radio" class="radio" id="female" v-model="userinfo.gender" value="0" />
+        <input
+          type="radio"
+          class="radio"
+          id="female"
+          v-model="userinfo.gender"
+          value="0"
+        />
         <label for="female" class="aftertext">女</label>
-        <span class="attentiontext" id="genderatt" v-show="show">请选择性别</span>
+        <span class="attentiontext" id="genderatt" v-show="show"
+          >请选择性别</span
+        >
+      </div>
+
+      <div class="cinbox" id="campus_selector">
+        <label class="beforetext">校区：</label>
+        <div id="campussl" class="inputer">
+          <select v-model="campus" class="select" @change="change">
+            <option v-for="(item, index) in arr1" :value="index" :key="index">{{
+              item
+            }}</option>
+          </select>
+        </div>
+        <span class="attentiontext" v-show="campus_check"
+          >你还没有选择校区</span
+        >
+      </div>
+      <div class="cinbox" id="colledge_selector">
+        <label class="beforetext">学院：</label>
+        <div id="collegesl" class="inputer">
+          <select v-model="college" @change="back" class="select">
+            <option v-for="(item, index) in arr2" :value="item" :key="index">{{
+              item
+            }}</option>
+          </select>
+        </div>
+        <label class="attentiontext" v-show="college_check"
+          >你还没有选择学院</label
+        >
       </div>
       <div class="cinbox" id="grade_selector">
         <label class="beforetext">年级：</label>
@@ -31,27 +74,16 @@
             <option>大一</option>
             <option>大二</option>
             <option>大三</option>
+            <option>大四</option>
+            <option v-if="college === '医学院' || college === '建筑学院'"
+              >大五</option
+            >
+            <option>研一</option>
+            <option>研二</option>
+            <option>研三</option>
           </select>
         </div>
         <span class="attentiontext" v-show="grade_check">你还没有选择年级</span>
-      </div>
-      <div class="cinbox" id="campus_selector">
-        <label class="beforetext">校区：</label>
-        <div id="campussl" class="inputer">
-          <select v-model="campus" class="select" @change="change">
-            <option v-for="(item,index) in arr1" :value="index" :key="index">{{ item }}</option>
-          </select>
-        </div>
-        <span class="attentiontext" v-show="campus_check">你还没有选择校区</span>
-      </div>
-      <div class="cinbox" id="colledge_selector">
-        <label class="beforetext">学院：</label>
-        <div id="collegesl" class="inputer">
-          <select v-model="college" @change="back" class="select">
-            <option v-for="(item,index) in arr2" :value="item" :key="index">{{ item }}</option>
-          </select>
-        </div>
-        <label class="attentiontext" v-show="college_check">你还没有选择学院</label>
       </div>
       <div class="cinbox">
         <label class="beforetext">手机：</label>
@@ -65,7 +97,9 @@
           placeholder="请输入手机号"
           @input="isPhone"
         />
-        <label class="attentiontext" id="telatt" v-show="teler">请输入正确的11位手机号</label>
+        <label class="attentiontext" id="telatt" v-show="teler"
+          >请输入正确的11位手机号</label
+        >
       </div>
       <div class="cinbox3">
         <p class="att2" id="select_text">
@@ -86,7 +120,7 @@
             v-model="userinfo.time"
             :value="time[0]"
           />
-          <label for="time1" class="aftertext2">{{time[0]}}</label>
+          <label for="time1" class="aftertext2">{{ time[0] }}</label>
         </div>
         <div class="cinbox4">
           <input
@@ -97,7 +131,7 @@
             v-model="userinfo.time"
             :value="time[1]"
           />
-          <label for="afternoon9" class="aftertext2">{{time[1]}}</label>
+          <label for="afternoon9" class="aftertext2">{{ time[1] }}</label>
         </div>
         <div class="cinbox4">
           <input
@@ -108,7 +142,7 @@
             v-model="userinfo.time"
             :value="time[2]"
           />
-          <label for="morning10" class="aftertext2">{{time[2]}}</label>
+          <label for="morning10" class="aftertext2">{{ time[2] }}</label>
         </div>
         <div class="cinbox4">
           <input
@@ -119,10 +153,12 @@
             v-model="userinfo.time"
             :value="time[3]"
           />
-          <label for="afternoon10" class="aftertext2">{{time[3]}}</label>
+          <label for="afternoon10" class="aftertext2">{{ time[3] }}</label>
         </div>
       </div>
-      <label class="attentiontext" id="timeatt" v-show="timer">你还没有选择时间段</label>
+      <label class="attentiontext" id="timeatt" v-show="timer"
+        >你还没有选择时间段</label
+      >
       <div class="button" id="btn_container" @click="remove">
         <input
           type="submit"
@@ -143,8 +179,8 @@ import "@/assets/css/register.css";
 //
 var college = require("@/assets/college.json");
 import axios from "axios";
-import {ajaxurl} from '../config';
-import api from '../api';
+import { ajaxurl } from "../config";
+import api from "../api";
 export default {
   name: "register",
   data: function() {
@@ -183,11 +219,11 @@ export default {
   methods: {
     submit() {
       this.isClick == true;
-      if(window.sessionStorage.getItem('isAbled')=="true"){
-        this.isAbled=true;
-        this.$alert(window.sessionStorage.getItem('TimeErr'),'活动时间提示',{
-          confirmButtonText:"返回"
-        }).catch(()=>{});
+      if (window.sessionStorage.getItem("isAbled") == "true") {
+        this.isAbled = true;
+        this.$alert(window.sessionStorage.getItem("TimeErr"), "活动时间提示", {
+          confirmButtonText: "返回"
+        }).catch(() => {});
         return;
       }
       if (this.campus == 3) {
@@ -259,32 +295,37 @@ export default {
                 switch (res.data.errmsg.type[i]) {
                   case "name":
                     this.namer = true;
-                      this.$refs["input"].focus();
+                    this.$refs["input"].focus();
                     break;
                   case "tele":
                     this.teler = true;
-                        this.$refs["tel"].focus();
+                    this.$refs["tel"].focus();
                     break;
                   default:
-                                    this.$alert("有什么填错了", "提示", {
-                  confirmButtonText: "返回",
-                }).catch(() => {
-                });
+                    this.$alert("有什么填错了", "提示", {
+                      confirmButtonText: "返回"
+                    }).catch(() => {});
                     break;
                 }
               }
-            }else if(res.data.errcode == 402){
-                  this.$alert(String(res.data.errmsg.name)+"同学，你"+String(res.data.errmsg.msg),"提示",{
-                  confirmButtonText:"返回"
-                }).catch(() => {
-                  // this.$router.push('/');
-                });
-            }else{
-                  this.$alert(String(res.data.errmsg),"提示",{
-                  confirmButtonText:"返回"
-                }).catch(() => {
-                  // this.$router.push('/');
-                });
+            } else if (res.data.errcode == 402) {
+              this.$alert(
+                String(res.data.errmsg.name) +
+                  "同学，你" +
+                  String(res.data.errmsg.msg),
+                "提示",
+                {
+                  confirmButtonText: "返回"
+                }
+              ).catch(() => {
+                // this.$router.push('/');
+              });
+            } else {
+              this.$alert(String(res.data.errmsg), "提示", {
+                confirmButtonText: "返回"
+              }).catch(() => {
+                // this.$router.push('/');
+              });
             }
           })
           .catch(error => {
@@ -295,22 +336,21 @@ export default {
                 this.isAbled = true;
                 this.$router.go(-1);
                 this.$alert("你还没有填写信息！", "提示", {
-                  confirmButtonText: "确认",
-                }).catch(() => {
-                });
+                  confirmButtonText: "确认"
+                }).catch(() => {});
                 break;
               case 402:
                 this.isAbled = true;
-                this.$alert("你不是报名过了吗","提示",{
-                  confirmButtonText:"返回"
+                this.$alert("你不是报名过了吗", "提示", {
+                  confirmButtonText: "返回"
                 }).catch(() => {
                   // this.$router.push('/');
                 });
                 break;
               case 403:
                 this.isAbled = false;
-                this.$alert("网络出错啦","提示",{
-                  confirmButtonText:"返回"
+                this.$alert("网络出错啦", "提示", {
+                  confirmButtonText: "返回"
                 }).catch(() => {
                   // this.$router.push('/');
                 });
@@ -318,15 +358,15 @@ export default {
                 console.log(error.message);
               case 500:
                 this.isAbled = true;
-                this.$alert("网络出错啦","提示",{
-                  confirmButtonText:"返回"
+                this.$alert("网络出错啦", "提示", {
+                  confirmButtonText: "返回"
                 }).catch(() => {
                   // this.$router.push('/');
                 });
               case 502:
                 this.isAbled = true;
-                this.$alert("网络出错啦","提示",{
-                  confirmButtonText:"返回"
+                this.$alert("网络出错啦", "提示", {
+                  confirmButtonText: "返回"
                 }).catch(() => {
                   // this.$router.push('/');
                 });
@@ -404,7 +444,9 @@ export default {
     this.arr2 = college[0];
     this.$refs["input"].focus();
     document.getElementsByTagName("body")[0].style.overflowY = "scroll";
-    document.getElementById("app").style.overflowY = "scroll";
+    let app = document.getElementById("app");
+    app.style.overflowY = "scroll";
+    app.style.height = getComputedStyle(app, null).getPropertyValue("height");
   },
   computed: {
     timer: function() {

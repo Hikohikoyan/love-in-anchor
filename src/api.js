@@ -123,28 +123,14 @@ export function wxlogin() {
   if (!isWeiXin) {
     return;
   }
-  const option_wx = {
-    method: "POST",
-    transformRequest: [
-      function(data) {
-        console.log(data);
-        data = JSON.stringify(data);
-        return data;
-      }
-    ],
-    headers: {
-      // "content-type": "application/x-www-form-urlencoded"
-      // "Content-type": "application/x-www-form-urlencoded"
-    },
-    data: "url=https://hemc.100steps.net/2019/anchor/recruit",
-    url: getWxurl
-  };
   fetch(getWxurl, {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
     method: "POST",
-    body: qs.stringify({ url: window.location.href.split("#")[0] })
+    body: qs.stringify({
+      url: location.href.split("#")[0]
+    })
   })
     .then(res => res.json())
     .then(res => {
@@ -160,7 +146,7 @@ export function wxlogin() {
         //alert(window.location.href.split('#')[0]);
         wx.updateTimelineShareData({
           title: "爱上你主播：爱上你的十二时辰", // 分享标题
-          link: window.location.href.split("#")[0],
+          link: "https://hemc.100steps.net/2019/anchor/recruit/",
           imgUrl: "https://hemc.100steps.net/2019/anchor/poster/recruit.jpg",
           success: function(res) {},
           cancel: function(res) {
@@ -171,7 +157,8 @@ export function wxlogin() {
       //分享给朋友
       wx.updateAppMessageShareData({
         title: "爱上你主播：爱上你的十二时辰",
-        link: window.location.href.split("#")[0],
+        desc: "", // 分享描述
+        link: "https://hemc.100steps.net/2019/anchor/recruit/",
         imgUrl: "https://hemc.100steps.net/2019/anchor/poster/recruit.jpg",
         success: function(res) {
           // 用户确认分享后执行的回调函数
