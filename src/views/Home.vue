@@ -2,10 +2,10 @@
   <div id="home">
     <!-- <img alt="title" id="title" :src="title" /> -->
     <anime id="anime"></anime>
-    <MyButton button_name="introbtn" pagename="/intro" :isAbled="0"></MyButton>
+    <MyButton button_name="introbtn" :pagename="pagename1" :isAbled="0"></MyButton>
     <MyButton
       button_name="registerbtn"
-      pagename="/resgister"
+      :pagename="pagename2"
       :isAbled="0"
     ></MyButton>
   </div>
@@ -30,7 +30,9 @@ export default {
   data() {
     return {
       // title : title
-      isAbled: 0
+      isAbled: 0,
+      pagename1:"/intro",
+      pagename2:"/register"
     };
   },
   mounted() {
@@ -42,7 +44,10 @@ export default {
     } else {
       this.isAbled = 0;
     }
-    // checkTime();
+    checkTime();
+    if(window.sessionStorage.getItem('TimeErr')!=""){
+      this.$alert(window.sessionStorage.getItem('TimeErr'),"提示").catch(()=>{});
+    }
     // checkLogin();
     // checkSubscribe();
   }

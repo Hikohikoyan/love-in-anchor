@@ -47,10 +47,10 @@ function switchErrcode(errcode, method) {
     case "checkTime":
       switch (errcode) {
         case 400:
-          errmsg = "活动还未开始!";
+          errmsg = "活动还未开始哦～敬请期待";
           break;
         case 401:
-          errmsg = "活动已结束!";
+          errmsg = "活动已经结束啦～感谢关注";
           break;
         default:
           break;
@@ -70,12 +70,12 @@ export function checkTime() {
     url: apiurl + "checkTime"
   };
   axios(options).then(res => {
-    var msg = switchErrcode(Number(res.data.errcode));
+    var msg = switchErrcode(Number(res.data.errcode),"checkTime");
     console.log(msg);
     if (msg != "") {
-      this.$alert(msg, "提示", {
-        confirmButtonText: "好的"
-      }).catch(() => {});
+      // this.$alert(msg, "提示", {
+      //   confirmButtonText: "好的"
+      // }).catch(() => {});
       window.sessionStorage.setItem("TimeErr", msg);
       window.sessionStorage.setItem("isAbled", "true");
     } else {
@@ -115,7 +115,7 @@ export function checkSubscribe() {
     } else {
       //请求关注公众号
     }
-    var msg = switchErrcode(res.data.errcode);
+    var msg = switchErrcode(res.data.errcode,"checkSubscribe");
     return msg;
   });
 }
