@@ -42,8 +42,8 @@ export default {
     } else {
       this.isAbled = 0;
     }
-    // checkTime();
-    // checkLogin();
+    checkTime();
+    checkLogin();
     // checkSubscribe();
   }
 };
