@@ -23,8 +23,8 @@ export default {
     // intro,
   },
   methods: {
-    goBack(){
-    this.$router.replace({path: '/'});
+    goBack() {
+      this.$router.replace({ path: "/" });
     }
   },
   mounted() {
@@ -32,9 +32,9 @@ export default {
       history.pushState(null, null, document.URL);
       window.addEventListener("popstate", this.goBack, false);
     }
-    document.getElementsByTagName("body")[0].style.overflowY="hidden"; 
-    document.getElementById("app").style.overflowY="hidden";
-
+    // document.documentElement.scrollTop = 0;
+    document.getElementsByTagName("body")[0].style.overflowY = "hidden";
+    document.getElementById("app").style.overflowY = "hidden";
   },
 
   destroyed() {
@@ -50,10 +50,10 @@ export default {
 <style>
 #success {
   margin-top: 260px;
-  height: -webkit-fill-available;
+  /* height: -webkit-fill-available; */
   /* display: flex; */
   /* text-align: center; */
-      overflow:hidden;
+  overflow: hidden;
   width: 100%;
 }
 /* #title{

@@ -1,21 +1,22 @@
 <template>
   <div id="intro">
-    <img id="title" :src="title" />
+    <img id="title" :src="title" style="opacity: 0;" />
 
     <div id="textbox">
       <p class="intro_text">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"爱上女主播"播音主持大赛是华工最为专业、影响力最大的播音主持类比赛，从创办之初至今已延续了十一年，为华工选拔和培育出了一大批优秀的主持人才，也为无数心怀主持梦想的同学开启了全新世界的大门。
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“爱上女主播”播音主持大赛是华工最为专业、影响力最大的播音主持类比赛，从创办之初至今已延续了十一年，为华工选拔和培育出了一大批优秀的主持人才，也为无数心怀主持梦想的同学开启了全新世界的大门。
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;今年，第十二届"爱上你主播"将以"十二时辰"为主题开启新的旅程。在华园，爱上你的十二时辰。
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;今年，“爱上”也为男生提供一个展示的舞台，男生女生皆可报名，故更名为“爱上你主播”。第十二届“爱上你主播”将以“十二时辰”为主题开启新的旅程。在华园，爱上你的十二时辰。
         <br />
-        <br />报名方式：
-        <br />10月28日至10月30日
-        <br />一、二饭百步梯摊位线下报名
-        <br />10月25日至10月31日
-        <br />百步梯微信公众号线上报名
+        <br />报名方式： <br />一、二饭百步梯摊位线下报名 <br />11月4日至11月6日
+        <br />百步梯微信公众号线上报名 <br />11月1日20:00至11月7日24:00
       </p>
     </div>
-    <MyButton button_name="registerbtn" pagename="register" isAbled="0"></MyButton>
+    <MyButton
+      button_name="registerbtn"
+      pagename="register"
+      isAbled="0"
+    ></MyButton>
   </div>
 </template>
 
@@ -33,10 +34,12 @@ export default {
       title: title
     };
   },
-  mounted(){
-    document.getElementsByTagName("body")[0].style.overflowY="hidden"; 
-        document.getElementById("app").style.overflowY="hidden";
-
+  mounted() {
+    document.getElementsByTagName("body")[0].style.overflowY = "hidden";
+    document.getElementById("app").style.overflowY = "hidden";
+    let title = document.getElementById("title");
+    title.offsetHeight;
+    document.getElementById("title").style.opacity = 1;
   }
 };
 </script>
@@ -50,6 +53,8 @@ export default {
 }
 #title {
   width: 100%;
+  height: 24.7vw;
+  transition: opacity 0.5s ease-out;
 }
 .intro_text {
   margin: 10%;

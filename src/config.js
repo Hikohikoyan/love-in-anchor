@@ -1,5 +1,10 @@
-export const apiurl = 'http://182.254.161.213/love-in-anchor/';
-export const ajaxurl = "http://182.254.161.213/love-in-anchor/recruit";
-export const phpurl="https://hemc.100steps.net/2018/fireman/auth.php?redirect="+"/";
-export const bbturl='http://182.254.161.213/love-in-anchor/checkSubscribe';
-export const getWxurl="https://hemc.100steps.net/2017/wechat/Home/Public/getJsApi";
+const baseUrl = "https://hemc.100steps.net/2019/anchor-backend/recruit";
+
+export const apiurl = `${baseUrl}/`;
+export const ajaxurl = `${baseUrl}/recruit`;
+export const phpurl =
+  "https://hemc.100steps.net/2018/fireman/auth.php?redirect=" +
+  encodeURIComponent(location.href);
+export const bbturl = `${baseUrl}/checkSubscribe`;
+export const getWxurl =
+  "https://hemc.100steps.net/2017/wechat/Home/Public/getJsApi";

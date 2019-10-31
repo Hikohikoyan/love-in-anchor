@@ -29,8 +29,8 @@ export default {
   },
   methods: {
       showpages: function () {
-        console.log(this.pagename);
-          button_name=this.button_name;
+        let button_name = this.button_name
+        // console.log(this.pagename);
           if( this.isAbled==1 ){
               setTimeout(() => {
                   isAbled = 0;

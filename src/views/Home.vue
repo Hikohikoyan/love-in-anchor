@@ -2,8 +2,12 @@
   <div id="home">
     <!-- <img alt="title" id="title" :src="title" /> -->
     <anime id="anime"></anime>
-    <MyButton button_name="introbtn" pagename="/intro" :isAbled=0></MyButton>
-    <MyButton button_name="registerbtn" pagename="/resgister" :isAbled=0></MyButton>
+    <MyButton button_name="introbtn" pagename="/intro" :isAbled="0"></MyButton>
+    <MyButton
+      button_name="registerbtn"
+      pagename="/resgister"
+      :isAbled="0"
+    ></MyButton>
   </div>
 </template>
 
@@ -13,7 +17,7 @@
 import MyButton from "../components/MyButton.vue";
 // import title from '../assets/title1.png'
 import anime from "../components/animation2.vue";
-import api, { checkTime, checkLogin, checkSubscribe, isWeiXin } from '../api'
+import api, { checkTime, checkLogin, checkSubscribe, isWeiXin } from "../api";
 
 export default {
   name: "home",
@@ -26,22 +30,22 @@ export default {
   data() {
     return {
       // title : title
-          isAbled:0,
+      isAbled: 0
     };
   },
   mounted() {
     document.getElementsByTagName("body")[0].style.overflowY = "hidden";
     document.getElementById("app").style.overflowY = "hidden";
-    if(!isWeiXin()){
-      this.isAbled=1;
+    if (!isWeiXin()) {
+      this.isAbled = 1;
       return;
-    }else{
-      this.isAbled=0;
+    } else {
+      this.isAbled = 0;
     }
-    checkTime();
-    checkLogin();
-    checkSubscribe();
-    }
+    // checkTime();
+    // checkLogin();
+    // checkSubscribe();
+  }
 };
 </script>
 <style scoped>

@@ -1,48 +1,52 @@
 <template>
   <div id="app" :style="{}">
-<router-view></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import api, { isWeiXin } from './api'
-export default {//backgroundImage: 'url(' + title + ')'
-  data () {
+import api, { isWeiXin } from "./api";
+export default {
+  //backgroundImage: 'url(' + title + ')'
+  data() {
     return {
-        title: require('@/assets/img/background.png')
+      title: require("@/assets/img/background.png")
+    };
+  },
+  mounted() {
+    if (!isWeiXin()) {
+      this.$alert("请使用微信浏览器访问！", "提示").catch(() => {});
     }
-    },
-mounted(){
- if(! isWeiXin()){
-   this.$alert('请使用微信浏览器访问！','提示').catch(()=>{});
- }
-}
-}
+  }
+};
 </script>
 
 <style >
-body,html,#app{
+body,
+html,
+#app {
   margin: 0;
   height: 100%;
   width: 100%;
-  position:absolute;
+  position: absolute;
   z-index: -4;
 }
-#app{
+#app {
   z-index: -1;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height:100%;
-    background-size: cover;
-  background-color: #eef5fb;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  /* background-color: #eef5fb; */
+  background-image: url("./assets/img/background.png");
 }
 ::-webkit-scrollbar {
-    display: none
+  display: none;
 }
-.el-message-box{
+.el-message-box {
   width: 80% !important;
-  }
+}
 </style>

@@ -34,14 +34,15 @@
 
 .beforetext {
   font-size: 5vw;
-    font-family: "Adobe Heiti Std";
+  font-family: "Adobe Heiti Std";
   color: rgb(78, 77, 77);
   text-transform: uppercase;
   line-height: 1.2;
   left: 0;
 }
 
-.aftertext ,.aftertext2{
+.aftertext,
+.aftertext2 {
   font-size: 20px;
   font-family: "Adobe Heiti Std";
   color: rgb(78, 77, 77);
@@ -58,7 +59,7 @@
   height: 0;
   width: 0;
   border: 15px transparent solid;
-  border-top: 15px solid  #838485;
+  border-top: 15px solid #838485;
   position: absolute;
   border-radius: 0.4rem 0.4rem 0 0.4rem;
   right: 6vw;
@@ -66,7 +67,7 @@
   transform: scale(0.6);
 }
 
-.select{
+.select {
   appearance: none;
   border: none;
   width: 100%;
@@ -114,7 +115,8 @@ select::after {
   z-index: 20;
 }
 
-.radio,.radio2 {
+.radio,
+.radio2 {
   display: inline-block;
   /* border-width: 1.7px; */
   border-color: rgb(127, 128, 128);
@@ -168,9 +170,9 @@ select::after {
 }
 
 input[type='radio']:checked+.aftertext::before,
-input[type='checkbox']:checked+.aftertext::before ,
+input[type='checkbox']:checked+.aftertext::before,
 input[type='radio']:checked+.aftertext2::before,
-input[type='checkbox']:checked+.aftertext2::before{
+input[type='checkbox']:checked+.aftertext2::before {
   content: " ";
   background: linear-gradient(90deg, rgba(163, 188, 193, 1) 0%, rgba(185, 213, 229, 1) 100%);
   position: absolute;
@@ -182,26 +184,29 @@ input[type='checkbox']:checked+.aftertext2::before{
   /* -webkit-transform: scale(0.8); */
   transform: scale(0.6);
 }
+
 input[type='radio']:checked+.aftertext2::before,
-input[type='checkbox']:checked+.aftertext2::before{
+input[type='checkbox']:checked+.aftertext2::before {
   position: absolute;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    /* margin-left: -28px; */
-    margin-top: 3.2px;
-    /* margin-top: 1.3px; */
-    /* -webkit-transform: scale(0.8); */
-    /* -webkit-transform: scale(0.6); */
-    transform: scale(0.46);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  /* margin-left: -28px; */
+  margin-top: 3.2px;
+  /* margin-top: 1.3px; */
+  /* -webkit-transform: scale(0.8); */
+  /* -webkit-transform: scale(0.6); */
+  transform: scale(0.46);
 }
+
 #genderatt {
   margin-left: 10px;
 }
 
 #timeatt {
   margin-left: 20px;
-  margin-top: 53vw;}
+  margin-top: 53vw;
+}
 
 #telatt {
   /* margin-left: 30px; */
@@ -209,7 +214,8 @@ input[type='checkbox']:checked+.aftertext2::before{
 
 .cinbox4 {
   display: -webkit-inline-box;
-  height: 14vw;}
+  height: 14vw;
+}
 
 .cinbox2 {
   width: 300px;
@@ -247,7 +253,8 @@ input[type='checkbox']:checked+.aftertext2::before{
 input {
   outline: none;
 }
-.att3{
+
+.att3 {
   margin: 0;
   margin-top: 5px;
   line-height: 6.8vw;
@@ -255,20 +262,22 @@ input {
   font-size: 4.2vw;
   color: rgb(78, 77, 77);
 }
-.aftertext2{
+
+.aftertext2 {
   font-size: 5vw;
   /* margin-bottom: 20px; */
   position: initial;
   top: 0px;
   margin-top: -5px;
 }
+
 /* #nine::before {
     height: 60px;
     content: "";
     width: 100%;
     position: absolute; */
-    /* top: 0px; */
-    /* margin-top: -30px;
+/* top: 0px; */
+/* margin-top: -30px;
 }
 #nine::before{
   height: 30px;
@@ -277,7 +286,7 @@ input {
   position: absolute;
   left: 0px;
 } */
-.aftertext2::after{
+.aftertext2::after {
   height: 40px;
   content: "";
   width: 100%;
@@ -285,10 +294,11 @@ input {
   left: 0px;
 }
 
-.radio2{
+.radio2 {
   transform: scale(0.8) translateY(3.5px);
 
 }
-#female{
+
+#female {
   margin-left: 50px;
 }
