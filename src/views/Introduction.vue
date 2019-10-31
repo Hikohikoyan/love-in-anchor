@@ -66,5 +66,6 @@ export default {
   font-size: 2.2vh;
   margin-top: 8%;
   font-weight: 546;
+  user-select: none;
 }
 </style>

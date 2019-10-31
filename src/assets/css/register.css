@@ -33,6 +33,7 @@
 }
 
 .beforetext {
+  user-select: none;
   font-size: 5vw;
   font-family: "Adobe Heiti Std";
   color: rgb(78, 77, 77);
