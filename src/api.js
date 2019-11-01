@@ -2,6 +2,7 @@ import wx from "weixin-js-sdk";
 import { apiurl, phpurl, bbturl, getWxurl } from "./config";
 import axios from "axios";
 import qs from "qs";
+import app from "./main.js";
 
 var timestamp = new Date().getTime();
 const instance = axios.create({
@@ -70,12 +71,14 @@ export function checkTime() {
     url: apiurl + "checkTime"
   };
   axios(options).then(res => {
-    var msg = switchErrcode(Number(res.data.errcode),"checkTime");
+    var msg = switchErrcode(Number(res.data.errcode), "checkTime");
     console.log(msg);
     if (msg != "") {
-      // this.$alert(msg, "提示", {
-      //   confirmButtonText: "好的"
-      // }).catch(() => {});
+      app
+        .$alert(msg, "提示", {
+          confirmButtonText: "好的"
+        })
+        .catch(() => {});
       window.sessionStorage.setItem("TimeErr", msg);
       window.sessionStorage.setItem("isAbled", "true");
     } else {
@@ -115,7 +118,7 @@ export function checkSubscribe() {
     } else {
       //请求关注公众号
     }
-    var msg = switchErrcode(res.data.errcode,"checkSubscribe");
+    var msg = switchErrcode(res.data.errcode, "checkSubscribe");
     return msg;
   });
 }

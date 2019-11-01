@@ -45,9 +45,9 @@ export default {
       this.isAbled = 0;
     }
     checkTime();
-    if(window.sessionStorage.getItem('TimeErr')!=""){
-      this.$alert(window.sessionStorage.getItem('TimeErr'),"提示").catch(()=>{});
-    }
+    // if(window.sessionStorage.getItem('TimeErr')!=""){
+    //   this.$alert(window.sessionStorage.getItem('TimeErr'),"提示").catch(()=>{});
+    // }
     // checkLogin();
     // checkSubscribe();
   }
